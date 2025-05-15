@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ресурсы | Автоматизация внутренних бизнес-процессов университета. 2ГИС</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О проекте</a></li>
+                <li><a href="team.html">Участники</a></li>
+                <li><a href="blog.html">Журнал</a></li>
+                <li><a href="resources.html">Ресурсы</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="resources-section fade-in">
+            <h3>Наш партнёр</h3>
+            <div class="resources-list">
+                <div class="resource-item partner-item">
+                    <h3>2ГИС</h3>
+                    <p>Ведущая картографическая компания России, наш ключевой партнёр в разработке системы навигации.
+                    </p>
+                    <a href="https://2gis.ru" target="_blank" class="btn btn-primary">Официальный сайт 2ГИС</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="resources-section fade-in">
+            <h3>Используемые инструменты</h3>
+            <div class="resources-list">
+                <div class="resource-item">
+                    <h3>Blender</h3>
+                    <p>Профессиональный пакет для создания 3D-графики, использованный для детальной визуализации
+                        пространств университета.</p>
+                    <a href="https://www.blender.org" target="_blank" class="btn">Сайт Blender</a>
+                </div>
+                <div class="resource-item">
+                    <h3>Sweet Home 3D</h3>
+                    <p>Приложение для проектирования интерьеров и планировки помещений, используемое для создания
+                        архитектурных планов.</p>
+                    <a href="http://www.sweethome3d.com" target="_blank" class="btn">Сайт Sweet Home 3D</a>
+                </div>
+                <div class="resource-item">
+                    <h3>2ГИС API</h3>
+                    <p>API для интеграции картографических сервисов 2ГИС в наше приложение.</p>
+                    <a href="https://dev.2gis.com" target="_blank" class="btn">Документация API</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Студенты Московского Политеха</p>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная | Автоматизация внутренних бизнес-процессов университета. 2ГИС</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О проекте</a></li>
+                <li><a href="team.html">Участники</a></li>
+                <li><a href="blog.html">Журнал</a></li>
+                <li><a href="resources.html">Ресурсы</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <h1 class="fade-in">Автоматизация внутренних бизнес-процессов университета. 2ГИС</h1>
+            <p class="hero-text fade-in">Инновационный проект по оптимизации передвижения студентов и сотрудников
+                университета в
+                сотрудничестве
+                с компанией 2ГИС.</p>
+            <div class="hero-buttons fade-in">
+                <a href="#features" class="btn btn-primary">Узнать больше</a>
+                <a href="about.html" class="btn btn-secondary">О проекте</a>
+            </div>
+        </section>
+
+        <section id="features" class="features container">
+            <h2 class="section-title fade-in">Ключевые возможности</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Интерактивная карта</h3>
+                    <p>Детальная карта кампуса с возможностью навигации внутри зданий</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Оптимизация маршрутов</h3>
+                    <p>Умное планирование путей между корпусами с учетом расписания</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📊</div>
+                    <h3>Аналитика потоков</h3>
+                    <p>Анализ перемещений для оптимизации загруженности помещений</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Поиск аудиторий</h3>
+                    <p>Быстрый поиск свободных аудиторий и рабочих пространств</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats container">
+            <h2 class="section-title fade-in">Проект в цифрах</h2>
+            <div class="stats-grid">
+                <div class="stat-card fade-in">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Корпусов университета</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Аудиторий на карте</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Студентов в команде</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Доступность сервиса</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta container">
+            <div class="cta-content fade-in">
+                <h2>Готовы присоединиться к проекту?</h2>
+                <p>Станьте частью инновационного решения для университета</p>
+                <a href="team.html" class="btn btn-primary">Присоединиться к команде</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Студенты Московского Политеха</p>
+    </footer>
+
+    <script>
+        // Intersection Observer для анимации
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (!targetElement) return;
+
+                const headerOffset = document.querySelector('header').offsetHeight;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

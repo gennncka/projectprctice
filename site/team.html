@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Участники | Автоматизация внутренних бизнес-процессов университета. 2ГИС</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О проекте</a></li>
+                <li><a href="team.html">Участники</a></li>
+                <li><a href="blog.html">Журнал</a></li>
+                <li><a href="resources.html">Ресурсы</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2 class="fade-in">Наша команда</h2>
+
+        <div class="team-filters fade-in">
+            <h3>Фильтр по специализации:</h3>
+            <div class="tag-filters">
+                <button class="tag-filter active" data-tag="all">Все</button>
+                <button class="tag-filter" data-tag="3D Builder">3D Builder</button>
+                <button class="tag-filter" data-tag="Лидер">Лидер</button>
+                <button class="tag-filter" data-tag="Замерщик">Замерщик</button>
+                <button class="tag-filter" data-tag="Видеомонтаж">Видеомонтаж</button>
+            </div>
+        </div>
+
+        <div class="team-grid fade-in">
+            <div class="member" data-tags='["Замерщик", "3D Builder"]'>
+                <img src="images/team/RZ.jpg" alt="Роман Захаров">
+                <h3>Роман Захаров</h3>
+                <div class="member-tags">
+                    <span class="tag">Замерщик</span>
+                    <span class="tag">3D Builder</span>
+                </div>
+            </div>
+
+            <div class="member" data-tags='["Замерщик", "3D Builder"]'>
+                <img src="images/team/RH.jpg" alt="Руслан Халимов">
+                <h3>Руслан Халимов</h3>
+                <div class="member-tags">
+                    <span class="tag">Замерщик</span>
+                    <span class="tag">3D Builder</span>
+                </div>
+            </div>
+
+            <div class="member" data-tags='["Лидер", "Замерщик", "3D Builder"]'>
+                <img src="images/team/AR.jpg" alt="Алина Рекало">
+                <h3>Алина Рекало</h3>
+                <div class="member-tags">
+                    <span class="tag">Лидер</span>
+                    <span class="tag">Замерщик</span>
+                    <span class="tag">3D Builder</span>
+                </div>
+            </div>
+
+            <div class="member" data-tags='["Замерщик", "3D Builder"]'>
+                <img src="images/team/LM.jpg" alt="Мария Ларионова">
+                <h3>Мария Ларионова</h3>
+                <div class="member-tags">
+                    <span class="tag">Замерщик</span>
+                    <span class="tag">3D Builder</span>
+                </div>
+            </div>
+
+            <div class="member" data-tags='["Замерщик", "3D Builder"]'>
+                <img src="images/team/BO.jpg" alt="Богдан Озеров">
+                <h3>Богдан Озеров</h3>
+                <div class="member-tags">
+                    <span class="tag">Замерщик</span>
+                    <span class="tag">3D Builder</span>
+                </div>
+            </div>
+
+            <div class="member" data-tags='["Лидер", "3D Builder"]'>
+                <img src="images/team/MK.jpg" alt="Михаил Кондрашов">
+                <h3>Михаил Кондрашов</h3>
+                <div class="member-tags">
+                    <span class="tag">Лидер</span>
+                    <span class="tag">3D Builder</span>
+                </div>
+            </div>
+
+            <div class="member" data-tags='["Замерщик", "Видеомонтаж"]'>
+                <img src="images/team/US.jpg" alt="Юнес Шмиши">
+                <h3>Юнес Шмиши</h3>
+                <div class="member-tags">
+                    <span class="tag">Замерщик</span>
+                    <span class="tag">Видеомонтаж</span>
+                </div>
+            </div>
+        </div>
+
+        <p class="team-note fade-in">и другие студенты</p>
+
+        <section class="project-lead fade-in">
+            <h3>Руководитель проекта</h3>
+            <div class="member leader">
+                <img src="images/team/AH.jpg" alt="Алексей Евгеньевич Харламенков">
+                <h3>Алексей Евгеньевич Харламенков</h3>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Студенты Московского Политеха</p>
+    </footer>
+
+    <script>
+        // Intersection Observer для анимации
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Фильтрация по тегам
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterButtons = document.querySelectorAll('.tag-filter');
+            const members = document.querySelectorAll('.member');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tag = button.getAttribute('data-tag');
+
+                    // Обновляем активную кнопку
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // Фильтруем участников
+                    members.forEach(member => {
+                        if (tag === 'all') {
+                            member.style.display = 'block';
+                            return;
+                        }
+
+                        const memberTags = JSON.parse(member.getAttribute('data-tags'));
+                        if (memberTags.includes(tag)) {
+                            member.style.display = 'block';
+                        } else {
+                            member.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
