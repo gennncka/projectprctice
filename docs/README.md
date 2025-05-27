@@ -23,6 +23,7 @@
 
 ### Этап 2: Разработка (03-04.2025)
 **Telegram-бот:**
+13.03.2025
 - Добавлена возможность отмены текущего действия
 ```python
     async def cancel(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -39,3 +40,22 @@
             reply_markup=ReplyKeyboardRemove()
         )
         return ConversationHandler.END
+```
+24.03.2025
+- Реализация механизма уведомлений с разными типами повторений
+
+- ✅ Система хранения параметров в SQLite:
+  ```sql
+  ALTER TABLE reminders ADD COLUMN repeat_type INTEGER NOT NULL DEFAULT 0
+  ALTER TABLE reminders ADD COLUMN repeat_interval INTEGER
+
+06.04.2025
+- ✅ Алгоритм пересчета дат:
+  ```python
+    def calculate_next_run(last_run, repeat_type, interval):
+        if repeat_type == RepeatType.DAILY:
+            return last_run + timedelta(days=1)
+        elif repeat_type == RepeatType.WEEKLY:
+            return last_run + timedelta(weeks=1)
+        elif repeat_type == RepeatType.CUSTOM:
+            return last_run + timedelta(days=interval)
