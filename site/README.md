@@ -41,5 +41,24 @@
     </div>
 </section>
 ```
+### 3. JS
+- Анимация при скролле
+```js
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+});
+```
+
+- Плавная прокрутка
+```js
+window.scrollTo({
+    top: offsetPosition,
+    behavior: 'smooth'
+});
+```
 ## Развертывание
 Сайт размещен на netlify и доступен по адресу: [[URL сайта] ](https://gennncka2gis.netlify.app)
