@@ -16,5 +16,30 @@
 - JavaScript
 - Адаптивный дизайн
 
+## Журнал
+
+### 1. Навигационное меню
+```html
+<nav>
+    <ul class="menu">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="about.html">О проекте</a></li>
+        <li><a href="team.html">Участники</a></li>
+        <li><a href="blog.html">Журнал</a></li>
+        <li><a href="resources.html">Ресурсы</a></li>
+    </ul>
+</nav>
+```
+###Секция
+```html
+<section class="hero container">
+    <h1>Автоматизация внутренних бизнес-процессов университета. 2ГИС</h1>
+    <p>Инновационный проект по оптимизации передвижения...</p>
+    <div class="hero-buttons">
+        <a href="#features" class="btn btn-primary">Узнать больше</a>
+        <a href="about.html" class="btn btn-secondary">О проекте</a>
+    </div>
+</section>
+```
 ## Развертывание
 Сайт размещен на netlify и доступен по адресу: [[URL сайта] ](https://gennncka2gis.netlify.app)
